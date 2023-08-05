@@ -8,7 +8,7 @@ public class mainClass {
         JFrame window = new JFrame(null, null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Kar sathe mishbo bhai");
+        window.setTitle("Hunting game");
 
         controlPanel gamePanel = new controlPanel();
         window.add(gamePanel);
