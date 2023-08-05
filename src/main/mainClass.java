@@ -2,14 +2,15 @@ package main;
 
 import javax.swing.*;
 
-public class Main {
+public class mainClass {
     public static void main(String[] args) {
-        JFrame window = new JFrame();
+
+        JFrame window = new JFrame(null, null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Hunting Game");
+        window.setTitle("Kar sathe mishbo bhai");
 
-        GamePanel gamePanel = new GamePanel();
+        controlPanel gamePanel = new controlPanel();
         window.add(gamePanel);
         window.pack();
 
@@ -17,6 +18,5 @@ public class Main {
         window.setVisible(true);
 
         gamePanel.startGameThread();
-
     }
 }
