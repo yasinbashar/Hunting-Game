@@ -12,8 +12,8 @@ import main.controlPanel;
 
 public class tileManager {
      controlPanel gp;
-    tileClass[] tile;
-    int mapTileNum[][];
+    public tileClass[] tile;
+   public int mapTileNum[][];
 
     public tileManager(controlPanel gp){
         this.gp = gp;
