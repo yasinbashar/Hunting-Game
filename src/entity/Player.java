@@ -38,20 +38,20 @@ public class Player extends Ent {
         worldY = gp.tileSize*21;
         speed = 4;
         direction = "down";
-        // spriteCounter = 0;
-        // spriteNum = 1;
+         spriteCounter = 0;
+         spriteNum = 1;
     }
 
     public void getPlayerImage(){
         try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_down_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_right_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/PlayerSprt/boy_left_2.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_down_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_right_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/playerSprite/boy_left_2.png"));
         }
         catch(IOException e){
             e.printStackTrace();
@@ -81,7 +81,7 @@ public class Player extends Ent {
             }
 
             spriteCounter++;
-            if(spriteCounter> 1){
+            if(spriteCounter> 12){
                 if(spriteNum == 1){
                     spriteNum = 2;
                 }
