@@ -13,5 +13,6 @@ public class Ent {
     public int spriteNum = 1;
 
     public Rectangle solidArea;
+    public int SolidAreaDefaultX,SolidAreaDefaultY;
     public boolean collisionOn = true;
 }

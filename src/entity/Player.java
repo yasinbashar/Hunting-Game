@@ -19,6 +19,7 @@ public class Player extends Ent {
     keyHandler keyH;
 
     public final int screenX, screenY;
+    int hasKey =0;
 
     public Player(controlPanel gp, keyHandler keyH){
         this.gp = gp;
@@ -28,6 +29,8 @@ public class Player extends Ent {
         screenX = gp.screenWidth/2 - gp.tileSize/2;
 
         solidArea = new Rectangle( 8, 16, 32, 32);
+        SolidAreaDefaultX = 8;
+        SolidAreaDefaultY = 16;
 
         setDefaultValues();
         getPlayerImage();
@@ -82,6 +85,9 @@ public class Player extends Ent {
             // check tile collision
             collisionOn = false;
             gp.colCheck.checkTile(this);
+            //CHECK OBJECT COLLISION
+            int objIndex = gp.colCheck.checkObject(this,true);
+            pickUpObject(objIndex);
 
             // if collision is false, player can move
             if(collisionOn == false){
@@ -114,6 +120,32 @@ public class Player extends Ent {
             }
         }
     }
+    public void pickUpObject(int i){
+        if(i!=999){
+           String objectName = gp.obj[i].name;
+           switch (objectName){
+               case "Key":
+                   gp.playSE(1);
+                   hasKey++;
+                   gp.obj[i] = null;
+                   break;
+               case "Door":
+                   if(hasKey>0){
+                       gp.playSE(3);
+                       gp.obj[i]=null;
+                       hasKey--;
+                   }
+                   System.out.println("Key:"+hasKey);
+                   break;
+               case "Boots":
+                   gp.playSE(2);
+                   speed+=2;
+                   gp.obj[i] = null;
+                   break;
+           }
+        }
+    }
+
 
     public void draw(Graphics2D g2){
         // g2.setColor(Color.white);
