@@ -19,7 +19,7 @@ public class Player extends Ent {
     keyHandler keyH;
 
     public final int screenX, screenY;
-    int hasKey =0;
+    public int hasKey =0;
 
     public Player(controlPanel gp, keyHandler keyH){
         this.gp = gp;
