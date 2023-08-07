@@ -28,7 +28,7 @@ public class controlPanel extends JPanel implements Runnable{
 
     int FPS = 60;
     tileManager tileM = new tileManager(this);
-    keyHandler keyH = new keyHandler(this);
+    public keyHandler keyH = new keyHandler(this);
     Sound sound = new Sound();
     public UI ui = new UI(this);
     Thread gameThread;
@@ -56,7 +56,7 @@ public class controlPanel extends JPanel implements Runnable{
         aSetter.setObject();
 
         playMusic(0);
-        gameState = playState;
+        gameState = titleState;
     }
 
     public void startGameThread(){
@@ -111,7 +111,12 @@ public class controlPanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         
-       
+        //Title Screen
+
+        if( gameState == titleState){
+           ui.draw(g2);
+        }
+        else{
        //tiles
         tileM.draw(g2);
         //object
@@ -122,11 +127,14 @@ public class controlPanel extends JPanel implements Runnable{
     
         }
         
-        ui.draw(g2);
+        
         //player
         player.draw(g2);
-    
-    
+        
+        ui.draw(g2);
+
+        }
+       
         g2.dispose();
     }
     public void playMusic(int i){
