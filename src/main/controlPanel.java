@@ -28,15 +28,23 @@ public class controlPanel extends JPanel implements Runnable{
 
     int FPS = 60;
     tileManager tileM = new tileManager(this);
-    keyHandler keyH = new keyHandler();
+    keyHandler keyH = new keyHandler(this);
     Sound sound = new Sound();
+    public UI ui = new UI(this);
     Thread gameThread;
+
     public collisionChecker colCheck = new collisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
     public superobject obj[] = new superobject[10];
+    
+    // Game State 
+    public int gameState;
+    public final int titleState = 0;
+    public final int playState = 1;
+    public final int pauseState = 2;
 
-    public  controlPanel(){
+    public controlPanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
@@ -48,6 +56,7 @@ public class controlPanel extends JPanel implements Runnable{
         aSetter.setObject();
 
         playMusic(0);
+        gameState = playState;
     }
 
     public void startGameThread(){
@@ -90,23 +99,34 @@ public class controlPanel extends JPanel implements Runnable{
     }
 
      public void update(){
+        if(gameState == playState){
         player.update();
+        }
+        if(gameState == pauseState){
+            //nothing
+        }
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        //Tile
+        
+       
+       //tiles
         tileM.draw(g2);
         //object
         for(int i=0;i<obj.length;i++){
             if(obj[i] !=null){
                 obj[i].draw(g2,this);
             }
+    
         }
-
+        
+        ui.draw(g2);
         //player
         player.draw(g2);
+    
+    
         g2.dispose();
     }
     public void playMusic(int i){
