@@ -36,7 +36,7 @@ public class controlPanel extends JPanel implements Runnable{
     public collisionChecker colCheck = new collisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
-    public superobject obj[] = new superobject[10];
+    public superobject obj[] = new superobject[20];
     
     // Game State 
     public int gameState;
