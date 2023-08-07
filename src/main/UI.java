@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import object.OBJ_Key;
+
 
 public class UI {
     controlPanel gp;
@@ -21,8 +21,7 @@ public class UI {
         this.gp = gp;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         arial_80_B = new Font("Arial", Font.BOLD, 80);
-        OBJ_Key key = new OBJ_Key();
-        keyImage = key.image;
+      
     }
 
     public void draw(Graphics2D g2){
@@ -35,11 +34,21 @@ public class UI {
           drawTitleScreen();
        }
        if(gp.gameState == gp.playState){
-        
+           drawScore();
        }
        if(gp.gameState == gp.pauseState){
           drawPauseScreen();
        }
+    }
+
+    public void drawScore(){
+       g2.setFont(g2.getFont().deriveFont(Font.ROMAN_BASELINE, 48F));
+        g2.setColor(Color.BLACK);
+        String text;
+
+        text = "Score : ";
+       
+        g2.drawString(text + gp.player.hasKey * 5, 24,48);
     }
 
     public void drawTitleScreen(){
