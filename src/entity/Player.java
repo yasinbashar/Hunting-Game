@@ -129,18 +129,18 @@ public class Player extends Ent {
                    hasKey++;
                    gp.obj[i] = null;
                    break;
-               case "Door":
-                   if(hasKey>0){
+               case "Manacrystal Blank":
+
                        gp.playSE(3);
                        gp.obj[i]=null;
-                       hasKey--;
-                   }
-                   System.out.println("Key:"+hasKey);
+                       hasKey++;
+
+
                    break;
-               case "Boots":
+               case "Manacrystal Full":
                    gp.playSE(2);
-                   speed+=2;
                    gp.obj[i] = null;
+                   hasKey++;
                    break;
            }
         }
